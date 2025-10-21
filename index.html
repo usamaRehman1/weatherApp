@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee&family=Plaster&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="main_container">
+
+        <!-- Background floating circles -->
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        <div class="circle c3"></div>
+
+        <!-- Center content -->
+        <div class="content">
+            <div id="header">
+                <h1>SKY CAST</h1>
+                <div class="searchBar">
+                    <input type="text" name="city" id="search" placeholder="Enter Search city..">
+                    <button id="searchBtn">SEARCH</button>
+                </div>
+            </div>
+            <div id="first_section">
+                <div class="part1">
+                    <h2 id="city_display">Karachi, Pakistan</h2>
+                    <P id="date">Thursday, 16 Octuber 2025</P>
+                    <div id="description">
+                        <div id="icon">☀️</div>
+                        <p id="temp">68 <sup>o</sup>C</p>
+                        <p id="main">Partly Cloudy</p>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+                <div class="part2">
+                    <div><span style="font-weight: bold;">Wind:</span> <span id="wind">8 mph</span> </div>
+                    <div><span style="font-weight: bold;">Humidity:</span> <span id="humidity">65%</span></div>
+                    <div><span style="font-weight: bold;">Pressure:</span> <span id="pressure">1012 hpa</span></div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="app1.js"></script>
+</body>
+
+</html>
