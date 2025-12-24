@@ -4,57 +4,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee&family=Plaster&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-        rel="stylesheet">
+    <title>AeroWeather</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <div id="main_container">
+<body class="weather-gradient-bg min-h-screen text-white p-4 sm:p-6 md:p-8">
 
-        <!-- Background floating circles -->
-        <div class="circle c1"></div>
-        <div class="circle c2"></div>
-        <div class="circle c3"></div>
+    <div class="max-w-6xl mx-auto space-y-8">
 
-        <!-- Center content -->
-        <div class="content">
-            <div id="header">
-                <h1>SKY CAST</h1>
-                <div class="searchBar">
-                    <input type="text" name="city" id="search" placeholder="Enter Search city..">
-                    <button id="searchBtn">SEARCH</button>
+        <header
+            class="flex flex-col sm:flex-row justify-between items-center gap-6 glass-card p-4 sm:p-6 rounded-[2rem]">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <i class="fa-solid fa-wind text-white text-xl"></i>
                 </div>
+                <span class="text-2xl font-extrabold tracking-tight">Aero</span>
             </div>
-            <div id="first_section">
-                <div class="part1">
-                    <h2 id="city_display">Karachi, Pakistan</h2>
-                    <P id="date">Thursday, 16 Octuber 2025</P>
-                    <div id="description">
-                        <div id="icon">☀️</div>
-                        <p id="temp">68 <sup>o</sup>C</p>
-                        <p id="main">Partly Cloudy</p>
-                    </div>
+
+            <div class="relative flex-grow max-w-lg">
+                <input type="text" id="city-search-input" placeholder="Search for a city..." class="w-full bg-white/10 border border-white/20 rounded-xl py-3 pl-12 pr-4 text-white placeholder-white/60 
+                           focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all shadow-md" />
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-white/70"></i>
+                <kbd id="searchBtn"
+                    class="absolute right-4 top-1/2 -translate-y-1/2 hidden md:inline-block px-2 py-1 bg-white/10 border border-white/20 rounded text-xs text-white/70 font-bold cursor-pointer">SEARCH</kbd>
+            </div>
+        </header>
+
+        <section class="grid grid-cols-1 lg:grid-cols-7 gap-6">
+
+            <div
+                class="lg:col-span-4 glass-card p-6 sm:p-8 rounded-[2.5rem] flex flex-col justify-between relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-yellow-400/20 rounded-full mix-blend-screen filter blur-[100px] pointer-events-none">
+                </div>
+
+                <div class="relative z-10 flex flex-col sm:flex-row justify-between items-start mb-8">
                     <div>
+                        <p id="current-date" class="text-sm opacity-80 mb-1">Monday, 22 December</p>
+                        <h2 id="current-city" class="text-4xl sm:text-5xl font-extrabold">Karachi</h2>
+                        <p id="current-country" class="text-lg opacity-90 mt-1">Pakistan</p>
                     </div>
-                </div>
-                <div class="part2">
-                    <div><span style="font-weight: bold;">Wind:</span> <span id="wind">8 mph</span> </div>
-                    <div><span style="font-weight: bold;">Humidity:</span> <span id="humidity">65%</span></div>
-                    <div><span style="font-weight: bold;">Pressure:</span> <span id="pressure">1012 hpa</span></div>
-
+                    <p id="current-time" class="text-xl sm:text-2xl font-bold mt-4 sm:mt-0">14:30</p>
                 </div>
 
+                <div class="relative z-10 flex flex-col sm:flex-row items-center justify-between mt-8 sm:mt-0">
+                    <div class="flex items-center gap-4 order-2 sm:order-1 mt-6 sm:mt-0">
+                        <img id="current-weather-icon" src="https://openweathermap.org/img/wn/04d@4x.png"
+                            alt="weather icon" class="w-24 h-24 sm:w-32 sm:h-32 drop-shadow-xl" />
+                        <span id="current-temp" class="text-7xl sm:text-9xl font-black leading-none">24°</span>
+                    </div>
+                    <p id="current-description"
+                        class="text-2xl sm:text-3xl font-light capitalize order-1 sm:order-2 text-center sm:text-right">
+                        Scattered Clouds</p>
+                </div>
             </div>
-        </div>
+
+            <div class="lg:col-span-3 grid grid-cols-2 gap-6">
+                <div class="glass-card p-5 rounded-[2rem] flex flex-col items-center justify-center text-center">
+                    <i class="fa-solid fa-droplet text-blue-300 text-3xl mb-2"></i>
+                    <p class="text-xs opacity-70 uppercase font-bold">Humidity</p>
+                    <p id="detail-humidity" class="text-2xl font-bold">58%</p>
+                </div>
+                <div class="glass-card p-5 rounded-[2rem] flex flex-col items-center justify-center text-center">
+                    <i class="fa-solid fa-wind text-green-300 text-3xl mb-2"></i>
+                    <p class="text-xs opacity-70 uppercase font-bold">Wind Speed</p>
+                    <p id="detail-wind" class="text-2xl font-bold">12 km/h</p>
+                </div>
+                <div class="glass-card p-5 rounded-[2rem] flex flex-col items-center justify-center text-center">
+                    <i class="fa-solid fa-sun text-yellow-300 text-3xl mb-2"></i>
+                    <p class="text-xs opacity-70 uppercase font-bold">UV Index</p>
+                    <p id="detail-uv" class="text-2xl font-bold">Low (2)</p>
+                </div>
+                <div class="glass-card p-5 rounded-[2rem] flex flex-col items-center justify-center text-center">
+                    <i class="fa-solid fa-gauge-high text-purple-300 text-3xl mb-2"></i>
+                    <p class="text-xs opacity-70 uppercase font-bold">Pressure</p>
+                    <p id="detail-pressure" class="text-2xl font-bold">1012 hPa</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card p-6 sm:p-8 rounded-[2.5rem]">
+            <h3 class="text-xl font-bold mb-6">Hourly Forecast</h3>
+            <div id="hourly-forecast-container" class="flex gap-4 sm:gap-6 overflow-x-auto hide-scrollbar pb-2">
+                <div
+                    class="flex-none w-28 text-center p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
+                    <p class="text-xs opacity-70 mb-2">12:00</p>
+                    <i class="fa-solid fa-cloud-sun text-yellow-400 text-2xl mb-2"></i>
+                    <p class="font-bold">23°</p>
+                </div>
+                <div
+                    class="flex-none w-28 text-center p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
+                    <p class="text-xs opacity-70 mb-2">13:00</p>
+                    <i class="fa-solid fa-sun text-yellow-500 text-2xl mb-2"></i>
+                    <p class="font-bold">25°</p>
+                </div>
+                <div
+                    class="flex-none w-28 text-center p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
+                    <p class="text-xs opacity-70 mb-2">14:00</p>
+                    <i class="fa-solid fa-cloud text-gray-400 text-2xl mb-2"></i>
+                    <p class="font-bold">24°</p>
+                </div>
+                <div
+                    class="flex-none w-28 text-center p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
+                    <p class="text-xs opacity-70 mb-2">15:00</p>
+                    <i class="fa-solid fa-cloud-rain text-blue-400 text-2xl mb-2"></i>
+                    <p class="font-bold">22°</p>
+                </div>
+                <div
+                    class="flex-none w-28 text-center p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
+                    <p class="text-xs opacity-70 mb-2">16:00</p>
+                    <i class="fa-solid fa-cloud-showers-heavy text-blue-500 text-2xl mb-2"></i>
+                    <p class="font-bold">20°</p>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-    <script src="app1.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
