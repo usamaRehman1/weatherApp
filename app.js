@@ -1,4 +1,4 @@
-const API_KEY = ""; // API Key Of Weather APP 
+const API_KEY = "4873aaa58624164be2166c2c2e7d8587"; // API Key Of Weather APP 
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 const months = ["January", "Fabrary", "March", "April", "May", "June", "July", "August", "September", "Octuber", "November", "December"]
@@ -33,6 +33,7 @@ const weatherConditionDisplay = async (city) => {
     try {
         const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
         const data = await res.json();
+        console.log("data =>", data)
 
         if (data.message == "city not found") {
             alert("Please enter a valid city name.")
