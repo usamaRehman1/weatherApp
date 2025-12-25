@@ -1,4 +1,11 @@
-const API_KEY = "4873aaa58624164be2166c2c2e7d8587"; // API Key Of Weather APP 
+// 1. Go to OpenWeatherMap official website. (https://openweathermap.org/)
+// 2. Create an Account
+// 3. Log In to Your Account
+// 4. Go to API Keys Section
+// 5. Generate API Key
+// 6. Copy the API Key
+
+const API_KEY = ""; // API Key Of Weather APP (Paste Here)
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 const months = ["January", "Fabrary", "March", "April", "May", "June", "July", "August", "September", "Octuber", "November", "December"]
